@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <script type="text/javascript" src="echarts.min.js"></script>
+    <script type="text/javascript" src="echarts-liquidfill.js"></script>
+    <title>Sidebars · Bootstrap v5.2</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sidebars/">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+
+    
+
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 20px;
+        height: 92vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="sidebars.css" rel="stylesheet">
+  </head>
+  <body>
+    
+
+<main>
+  <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+          <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+        太陽能監控系統
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+        </svg>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Offcanvas</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <!-- <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div> -->
+      </div>
+    </div>
+  </nav>
+</main>
+
+<main class="d-flex flex-nowrap">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height:92vh;">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link active" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+            <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+          </svg>
+          &thinsp; 首頁
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="nav-link text-white" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+            <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+            <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+          </svg>
+          &thinsp; 當月數據
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
+            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+          </svg>
+          &thinsp; 歷史數據
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hdd-rack" viewBox="0 0 16 16">
+            <path d="M4.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zM3 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm2 7a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+            <path d="M2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h1v2H2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2h-1V7h1a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm0 7v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-3-4v2H4V7h8z"/>
+          </svg>
+          &thinsp; 設備管理
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+            <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+            <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+          </svg>
+          &thinsp; 警報訊息
+        </a>
+      </li>
+    </ul>
+    <!-- <hr>
+    <div class="dropdown">
+      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong>mdo</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div> -->
+  </div>
+  <div class="b-example-vr"></div>
+ 
+
+  <div style="width:100%; height:auto; border:none; display:flex; flex-direction:row;">
+    <div style="width:33.3%; height:auto; border:none;" >
+      <div id="main1" style="width: 400px;height:400px;"></div>
+    </div>
+
+    <div style="width:33.3%; height:auto; border:none; display: flex; align-items: center;">
+      <div id="app" style="width: 100%;height: 400px"></div>
+    </div>
+    
+    <div style="width:33.3%; height:auto; border:none;">
+      <div id="main_co2" style="width: 400px;height:400px;"></div>
+    </div>
+    
+  </div>
+
+</main>
+
+
+
+
+
+    <!-- JavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+      <script src="sidebars.js"></script>
+      <script type="text/javascript">
+        // 基於準備好的dom，初始化echarts例項
+        var myChart = echarts.init(document.getElementById('main1'));
+        // 指定圖表的配置項和資料
+        var option = {
+            title:{
+            text:'即時發電量',
+            x:'center',
+            y:'65%',
+            textStyle:{
+                color:'#006400',
+                fontSize:20,
+                fontFamily:"Microsoft JhengHei ",
+            }},
+            series: [{
+                tooltip: {
+                    show: false
+                },
+                type: 'gauge',
+                radius: '82%',
+                center: ['50%', '60%'], //設置儀錶板位置
+                startAngle: 180, //設置儀表板起始角度
+                endAngle: 0, 
+                splitNumber:2, //設置儀錶板刻度的分割段数
+                detail: {
+                    show: false
+                },
+                axisLine: { //設置儀表板輪廓線相關設置
+                    lineStyle: {
+                        width: 15,
+                        color: [
+                            [0.3, 'RGB(83,207,251,0.2)'],
+                            [0.7, 'RGB(83,207,251,0.5)'],
+                            [1, 'RGB(83,207,251,0.8)'],
+                        ]
+                    }
+                }, 
+                axisLabel: { //設置刻度標籤
+                    show: false
+                }, 
+                axisTick: { //設置刻度樣式
+                    show:false
+                }, 
+                splitLine: { //設置分隔線樣式
+                    show: false,
+                }}, 
+            {
+                type: 'gauge',
+                radius: '75%',
+                min: 0,
+                max: 50,
+                center: ['50%', '60%'], //設置儀錶板位置
+                data: [{
+                    value: 0.014, //2022.7.11
+                }],
+                splitNumber: 10, //設置儀錶板刻度的分割段数
+                startAngle: 180,
+                endAngle: 0, //設置儀錶板结束角度
+                title: {
+                    offsetCenter: ['0', '50%'], //數组第一項是水平方向的偏移，第二項是垂直方向的偏移
+                    fontSize: 40
+                },
+                detail: {
+                    formatter: function(value) {
+                        return value + 'kwh'
+                    },
+                    fontSize: 30,
+                    color:'#072B79',
+                    offsetCenter: ['0%', '-70%']  //設置儀錶板中心的偏移位置
+                },
+                axisLine: {
+                    show:false
+                },
+                axisLabel: {
+                    color: '#072B79',//字體顏色
+                    fontSize: 15,
+                    distance: -25,
+                },
+                axisTick: {
+                    show: true,
+                    splitNumber: 10,
+                    lineStyle: {
+                        color: '#ccc',
+                        width:1
+                    },
+                    length: -15,
+                },
+                splitLine: {
+                    show: true,
+                    length: -25,
+                    lineStyle: {
+                        color: '#ccc',
+                        width: 1
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#00CED1' //指真顏色
+                    }
+                },
+                pointer: { //指針
+                    width: 10,
+                    length: '80%',
+                }
+            }]
+        };
+      myChart.setOption(option);
+      </script>
+      <script type="text/javascript">
+        // 基於準備好的dom，初始化echarts例項
+        var myChart = echarts.init(document.getElementById('main_co2'));
+        // 指定圖表的配置項和資料
+        var option = {
+            title:{
+            text:'CO₂排放量',
+            x:'center',
+            y:'65%',
+            textStyle:{
+                color:'#006400',
+                fontSize:20,
+                fontFamily:"Microsoft JhengHei ",
+            }},
+            series: [{
+                tooltip: {
+                    show: false
+                },
+                type: 'gauge',
+                radius: '82%',
+                center: ['50%', '60%'], //設置儀錶板位置
+                startAngle: 180, //設置儀表板起始角度
+                endAngle: 0, 
+                splitNumber:2, //設置儀錶板刻度的分割段数
+                detail: {
+                    show: false
+                },
+                axisLine: { //設置儀表板輪廓線相關設置
+                    lineStyle: {
+                        width: 15,
+                        color: [
+                            [0.3, 'RGB(124,252,0,0.2)'],
+                            [0.7, 'RGB(124,252,0,0.5)'],
+                            [1, 'RGB(124,252,0,0.9)'],
+                        ]
+                    }
+                }, 
+                axisLabel: { //設置刻度標籤
+                    show: false
+                }, 
+                axisTick: { //設置刻度樣式
+                    show:false
+                }, 
+                splitLine: { //設置分隔線樣式
+                    show: false,
+                }}, 
+            {
+                type: 'gauge',
+                radius: '75%',
+                min: 0,
+                max: 50,
+                center: ['50%', '60%'], //設置儀錶板位置
+                data: [{
+                    value: 7.66, //2022.7.11
+                }],
+                splitNumber: 10, //設置儀錶板刻度的分割段数
+                startAngle: 180,
+                endAngle: 0, //設置儀錶板结束角度
+                title: {
+                    offsetCenter: ['0', '50%'], //數组第一項是水平方向的偏移，第二項是垂直方向的偏移
+                    fontSize: 40
+                },
+                detail: {
+                    formatter: function(value) {
+                        return value + 'g'
+                    },
+                    fontSize: 30,
+                    color:'#2E8B57',
+                    offsetCenter: ['0%', '-70%']  //設置儀錶板中心的偏移位置
+                },
+                axisLine: {
+                    show:false
+                },
+                axisLabel: {
+                    color: '#006400',//字體顏色
+                    fontSize: 15,
+                    distance: -25,
+                },
+                axisTick: {
+                    show: true,
+                    splitNumber: 10,
+                    lineStyle: {
+                        color: '#ccc',
+                        width:1
+                    },
+                    length: -15,
+                },
+                splitLine: {
+                    show: true,
+                    length: -25,
+                    lineStyle: {
+                        color: '#ccc',
+                        width: 1
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#90EE90' //指真顏色
+                    }
+                },
+                pointer: { //指針
+                    width: 10,
+                    length: '80%',
+                }
+            }]
+        };
+        myChart.setOption(option);
+      </script>
+      <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('app'));
+        // data=40;
+        var option = {
+                series: [{
+                    type: 'liquidFill',
+                    name: '今日發電量',
+                    // data:[data/100,(data-5)/100],
+                    // color:['yellow','blue'],
+                    data: [{
+                            value:0.04 //2022.7.11
+                        }, 0.5,0.2],
+                    label: {
+                        formatter: '今日發電量 {c}kWh',
+                        fontSize: 28
+                    },
+                    radius:'70%',
+                    amplitude:'15%',
+                    direction:'left',
+                    // animationEasing:true,
+                    outline: {
+                        borderDistance: 0,
+                            itemStyle: {
+                                color:'#f5f5f5',
+                                borderWidth: 5,
+                                borderColor: '#f0f8ff',
+                                shadowBlur: 50,
+                                shadowColor: '#4682b4',
+                            }
+                        }, 
+                    
+                }],
+            };
+            myChart.setOption(option);
+      </script>
+  </body>
+</html>
